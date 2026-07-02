@@ -59,11 +59,18 @@ section{position:relative}
 
 /* header */
 header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:104px}
-.nav .logo img{height:80px;width:auto}
-.menu{display:flex;align-items:center;gap:34px}
-.menu a{font-family:var(--d);font-weight:600;font-size:1.02rem;color:var(--ink);transition:.15s}
-.menu a:hover{color:var(--blue)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:118px}
+.nav .logo img{height:94px;width:auto}
+.menu{display:flex;align-items:center;gap:6px}
+.mi{position:relative}
+.mi>a{font-family:var(--d);font-weight:600;font-size:1.02rem;color:var(--ink);transition:.15s;display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px}
+.mi>a:hover{color:var(--blue);background:var(--mist)}
+.mi>a .chev{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;transition:.2s}
+.mi.open>a .chev{transform:rotate(180deg)}
+.drop{position:absolute;top:100%;left:0;min-width:252px;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh2);padding:8px;display:none;z-index:80}
+.mi:hover .drop,.mi.open .drop{display:block}
+.drop a{display:block;font-family:var(--d);font-weight:500;font-size:.98rem;color:var(--ink);padding:11px 14px;border-radius:10px;transition:.15s}
+.drop a:hover{background:var(--mist);color:var(--blue)}
 .nav-r{display:flex;align-items:center;gap:20px}
 .nav-tel{display:flex;align-items:center;gap:8px;font-family:var(--d);font-weight:600;color:var(--ink);white-space:nowrap}
 .nav-tel:hover{color:var(--blue)} .nav-tel svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
@@ -189,7 +196,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.96);backdro
 footer{background:var(--charcoal);color:rgba(255,255,255,.68);padding:64px 0 0}
 .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:42px}
 .foot-logo{background:#fff;padding:14px 16px;border-radius:14px;display:inline-block;margin-bottom:18px}
-.foot-logo img{height:64px}
+.foot-logo img{height:82px}
 .foot p{font-size:.94rem;max-width:30ch}
 .foot-rate{display:flex;align-items:center;gap:8px;margin-top:15px;font-size:.86rem}
 footer h4{color:#fff;font-family:var(--d);font-weight:600;font-size:1rem;margin-bottom:15px}
@@ -212,12 +219,14 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
   .foot{grid-template-columns:1fr 1fr}
 }
 @media(max-width:620px){
-  .topbar .l a:first-child{display:none}
-  .menu{display:none}.menu.open{display:flex;position:absolute;top:104px;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--line);padding:22px 24px;gap:18px;box-shadow:var(--sh)}
+  .topbar .r{display:none}
+  .menu{display:none}.menu.open{display:flex;position:absolute;top:118px;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;border-bottom:1px solid var(--line);padding:16px 20px;gap:4px;box-shadow:var(--sh)}
   .burger{display:flex}.nav-tel{display:none}
+  .mi{width:100%}.mi>a{width:100%;justify-content:space-between}
+  .drop{position:static;display:none;box-shadow:none;border:0;border-radius:0;padding:2px 0 10px 14px;min-width:0}
+  .mi:hover .drop{display:none}.mi.open .drop{display:block}
   .usp .card,.serv-grid,.rev-grid,.steps,.gal-grid,.foot{grid-template-columns:1fr}
   .usp .it{border-right:0;border-bottom:1px solid var(--line)}
-  .hero-chip{left:12px;right:12px;bottom:12px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.gal img{transition:none}}
 </style>
@@ -232,7 +241,8 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
 <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9"/><path d="M16 3.1a4 4 0 010 7.8"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></symbol>
-<symbol id="i-euro" viewBox="0 0 24 24"><path d="M15 6a6 6 0 100 12M4 10h8M4 14h7"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V4a1 1 0 011-1h9l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.6" cy="7.6" r="1.4"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
 <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V5a1 1 0 011-1h6a1 1 0 011 1v16"/><path d="M14 21V10h4a1 1 0 011 1v10"/><path d="M9 8h2M9 12h2M9 16h2"/></symbol>
 <symbol id="i-cross" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
 <symbol id="i-stairs" viewBox="0 0 24 24"><path d="M3 20h4v-4h4v-4h4V8h4V4"/></symbol>
@@ -248,9 +258,10 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
   <div class="wrap">
     <div class="l">
       <a href="tel:+4995116090077"><svg><use href="#i-phone"/></svg> 0951 16090077</a>
+    </div>
+    <div class="r">
       <a href="mailto:info@kl-facility-solutions.de"><svg><use href="#i-mail"/></svg> info@kl-facility-solutions.de</a>
     </div>
-    <div class="r">5,0 <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span> aus 28 Google Bewertungen</div>
   </div>
 </div>
 
@@ -258,10 +269,32 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
   <div class="wrap nav">
     <a class="logo" href="/" aria-label="K&amp;L Facility Solutions Startseite"><img src="assets/logo.png" alt="K&amp;L Facility Solutions Logo, Gebäudereinigung Bamberg"></a>
     <nav class="menu" id="menu">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#einzugsgebiet">Einzugsgebiet</a>
-      <a href="#ueber-uns">Über uns</a>
-      <a href="#kontakt">Kontakt</a>
+      <div class="mi has-drop">
+        <a href="#leistungen">Leistungen <svg class="chev" viewBox="0 0 24 24"><use href="#i-chevron"/></svg></a>
+        <div class="drop">
+          <a href="/bueroreinigung-bamberg">Büroreinigung</a>
+          <a href="/praxisreinigung-bamberg">Praxisreinigung</a>
+          <a href="/treppenhausreinigung-bamberg">Treppenhausreinigung</a>
+          <a href="/glasreinigung-bamberg">Glasreinigung</a>
+          <a href="/gartenpflege-bamberg">Gartenpflege</a>
+          <a href="/winterdienst-bamberg">Winterdienst</a>
+        </div>
+      </div>
+      <div class="mi has-drop">
+        <a href="#einzugsgebiet">Einzugsgebiet <svg class="chev" viewBox="0 0 24 24"><use href="#i-chevron"/></svg></a>
+        <div class="drop">
+          <a href="/gebaeudereinigung-forchheim">Forchheim</a>
+          <a href="/gebaeudereinigung-herzogenaurach">Herzogenaurach</a>
+          <a href="/gebaeudereinigung-hoechstadt">Höchstadt</a>
+          <a href="/gebaeudereinigung-schweinfurt">Schweinfurt</a>
+          <a href="/gebaeudereinigung-coburg">Coburg</a>
+          <a href="/gebaeudereinigung-lichtenfels">Lichtenfels</a>
+          <a href="/gebaeudereinigung-kulmbach">Kulmbach</a>
+          <a href="/gebaeudereinigung-kronach">Kronach</a>
+        </div>
+      </div>
+      <div class="mi"><a href="#ueber-uns">Über uns</a></div>
+      <div class="mi"><a href="#kontakt">Kontakt</a></div>
     </nav>
     <div class="nav-r">
       <a class="nav-tel" href="tel:+4995116090077"><svg><use href="#i-phone"/></svg> 0951 16090077</a>
@@ -288,10 +321,6 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
     </div>
     <div class="hero-fig">
       <img src="assets/hero-treppenhaus.jpg" alt="Mitarbeiter von K&amp;L Facility Solutions bei der Treppenhausreinigung in Bamberg">
-      <div class="hero-chip">
-        <svg class="g" viewBox="0 0 48 48"><use href="#gG"/></svg>
-        <div><span class="num">5,0</span><br><small>28 Google Bewertungen</small></div>
-      </div>
     </div>
   </div>
 </section>
@@ -301,7 +330,7 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
     <div class="it"><span class="ic"><svg><use href="#i-shield"/></svg></span><div><b>Versichert</b><small>Rundum abgesichert</small></div></div>
     <div class="it"><span class="ic"><svg><use href="#i-users"/></svg></span><div><b>Geschultes Team</b><small>Zuverlässig und diskret</small></div></div>
     <div class="it"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><b>Feste Termine</b><small>Auf uns ist Verlass</small></div></div>
-    <div class="it"><span class="ic"><svg><use href="#i-euro"/></svg></span><div><b>Faire Festpreise</b><small>Transparent kalkuliert</small></div></div>
+    <div class="it"><span class="ic"><svg><use href="#i-tag"/></svg></span><div><b>Faire Festpreise</b><small>Transparent kalkuliert</small></div></div>
   </div>
 </div>
 
@@ -346,7 +375,7 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
     </figure>
     <div class="reveal">
       <span class="eyebrow">Über uns</span>
-      <h2>Ein Reinigungsunternehmen mit Gesicht.</h2>
+      <h2>Ihr Reinigungsunternehmen aus Bamberg.</h2>
       <p>K&amp;L Facility Solutions ist ein inhabergeführtes Reinigungsunternehmen aus Bamberg. Gegründet von Daniel Lang stehen wir für saubere Ergebnisse, verlässliche Termine und einen festen Ansprechpartner, der Ihr Objekt kennt.</p>
       <p>Ob Gewerbe, Praxis oder Privathaushalt: Wir kümmern uns mit geschultem Personal und moderner Ausstattung um Ihre Immobilie. Unser Anspruch ist eine Reinigung, die Sie gerne weiterempfehlen. Das bestätigen unsere Kundinnen und Kunden mit 5 von 5 Sternen auf Google.</p>
       <div class="chips">
@@ -380,17 +409,15 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
       <p>Unser Team ist in Bamberg und der gesamten Region für Sie im Einsatz. Wählen Sie Ihren Standort.</p>
     </div>
     <div class="towns reveal">
-      <a class="home" href="/gebaeudereinigung-bamberg"><span class="dot" style="background:#fff"></span>Bamberg</a>
       <a href="/gebaeudereinigung-forchheim"><span class="dot"></span>Forchheim</a>
-      <a href="/gebaeudereinigung-hoechstadt"><span class="dot"></span>Höchstadt</a>
       <a href="/gebaeudereinigung-herzogenaurach"><span class="dot"></span>Herzogenaurach</a>
+      <a href="/gebaeudereinigung-hoechstadt"><span class="dot"></span>Höchstadt</a>
       <a href="/gebaeudereinigung-schweinfurt"><span class="dot"></span>Schweinfurt</a>
       <a href="/gebaeudereinigung-coburg"><span class="dot"></span>Coburg</a>
       <a href="/gebaeudereinigung-lichtenfels"><span class="dot"></span>Lichtenfels</a>
-      <a href="/gebaeudereinigung-kronach"><span class="dot"></span>Kronach</a>
       <a href="/gebaeudereinigung-kulmbach"><span class="dot"></span>Kulmbach</a>
+      <a href="/gebaeudereinigung-kronach"><span class="dot"></span>Kronach</a>
     </div>
-    <a class="btn btn-w" href="/einzugsgebiet">Alle Einzugsgebiete ansehen</a>
   </div>
 </section>
 
@@ -462,12 +489,14 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
     <div>
       <h4>Einzugsgebiet</h4>
       <ul>
-        <li><a href="/gebaeudereinigung-bamberg">Bamberg</a></li>
         <li><a href="/gebaeudereinigung-forchheim">Forchheim</a></li>
         <li><a href="/gebaeudereinigung-herzogenaurach">Herzogenaurach</a></li>
+        <li><a href="/gebaeudereinigung-hoechstadt">Höchstadt</a></li>
         <li><a href="/gebaeudereinigung-schweinfurt">Schweinfurt</a></li>
         <li><a href="/gebaeudereinigung-coburg">Coburg</a></li>
-        <li><a href="/einzugsgebiet">Alle Einzugsgebiete</a></li>
+        <li><a href="/gebaeudereinigung-lichtenfels">Lichtenfels</a></li>
+        <li><a href="/gebaeudereinigung-kulmbach">Kulmbach</a></li>
+        <li><a href="/gebaeudereinigung-kronach">Kronach</a></li>
       </ul>
     </div>
     <div class="foot-c">
@@ -492,8 +521,20 @@ footer a{font-size:.94rem;transition:.15s}footer a:hover{color:#fff}
 <script>
 (function(){
   var b=document.getElementById('burger'),m=document.getElementById('menu');
-  if(b){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o);});
-    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');});});}
+  if(b){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o);});}
+  document.querySelectorAll('.mi.has-drop > a').forEach(function(t){
+    t.addEventListener('click',function(e){
+      if(window.innerWidth<=620){
+        e.preventDefault();
+        var mi=t.parentNode, was=mi.classList.contains('open');
+        document.querySelectorAll('.mi.has-drop').forEach(function(x){x.classList.remove('open');});
+        if(!was) mi.classList.add('open');
+      }
+    });
+  });
+  document.querySelectorAll('.drop a, .mi:not(.has-drop) > a').forEach(function(a){
+    a.addEventListener('click',function(){m.classList.remove('open');document.querySelectorAll('.mi.has-drop').forEach(function(x){x.classList.remove('open');});});
+  });
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});els.forEach(function(e){io.observe(e);});}
   else{els.forEach(function(e){e.classList.add('in');});}
